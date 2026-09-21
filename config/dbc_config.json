@@ -1,0 +1,62 @@
+{
+	"250_VehCAN_Matrix_V1.0.0-20210507-LK.dbc":{
+		"path": "D:\\sany\\性能优化\\data_analyser\\analyser\\250_VehCAN_Matrix_V1.0.0-20210507-LK.dbc",
+		"selected" : 1,
+		"CAN_Channel": 0,
+		"config": {
+			"AC":{
+				"0x18FD3A4A": ["C2T_CompCurr","C2T_CompVolt"]
+			},
+			"BMS_250":{
+				"0x1884EFF3": ["B2V_ST2_SOC","B2V_ST2_PackCurr","B2V_ST2_PackInsideVolt"]
+			},
+			"VCU":{
+				"0x18F101D0": ["V2I_Info1_DrvSpd","V2I_Info1_AccDegree","V2I_Info1_BrkDegree"],
+				"0x18F103D0": ["V2I_Info2_EvePowerConsum"]
+			}
+		}
+	},
+	"500_PTCAN_Matrix_V1.0.0-20210507-HC.dbc":{
+		"path": "D:\\sany\\性能优化\\data_analyser\\analyser\\500_PTCAN_Matrix_V1.0.0-20210507-HC.dbc",
+		"selected" : 1,
+		"CAN_Channel": 1,
+		"config": {
+			"DCDC":{
+			"0x18FF2DD9": ["A2V_DCDCOutCurr","A2V_DCDCOutVolt"]
+			},
+			"FCU":{
+				"0x18FF0212": ["FC_OutputPower","FC_Voltage","FC_Current"],
+				"0x18FF0812": ["FC_WaterPump_Power","FC_Fan_Power","FC_AirComprsor_Power","FC_H2RecyclePump_Power","FC_PTC_Power"],
+				"0x18FF0312": ["FC_DCDC_OutputPower","FC_DCDC_V","FC_DCDC_A"]
+			},
+			"HCU":{
+				"0x18FFA6F5": ["H2_Consume_Total"]
+			},
+			"EPS":{
+				"0x18F2D0D7": ["A2V_EPSMotDCVolt","A2V_EPSMotDCCurr"]
+			},
+			"EAP":{
+				"0x18F3D0D8": ["A2V_EAPMotDCVolt","A2V_EAPMotDCCurr"]
+			},
+			"LEPS":{
+				"0xCF1D0D5": ["A2V_LEPSMotDCVolt","A2V_LEPSMotDCCurr"]
+			},
+			"TCU":{
+				"0x18FF2103": ["TCU_Message1_CurrGear"]
+			},
+			"LV_MCU":{
+				"0x18FF41F0": ["M2V_MotSpd","M2V_MotTq","M2V_MotDCCur"],
+				"0x18FF51F0": ["M2V_MotDCVolt"]
+			},
+			"Power":{
+				"0x18F105D0": ["Power_Info_DriveCurrPower","Power_Info_RegenCurrPower"]
+			},
+			"ICM":{
+				"0x18FEF217": ["I2V_TotalMileage"]
+			},
+			"BMS":{
+				"0x1884EFF3": ["BMS_SOC","BMS_Curr","BMS_Volt"]
+			}
+		}
+	}
+}

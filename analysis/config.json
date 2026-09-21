@@ -1,0 +1,1160 @@
+{
+	"通用配置": {
+		"分析子文件夹时抛出异常": "否",
+		"数据有效时间阈值(s)": 60,
+		"绘制车速对应SOC曲线": "否",
+		"绘制电池电流对应SOC曲线": "否",
+		"绘制允许的脉冲回充电流和允许的脉冲放电电流对应SOC曲线": "否",
+		"绘制充电状态对应电流曲线": "否",
+		"绘制里程对应SOC曲线": "否",
+		"输出累计里程数据": "否",
+		"绘制车速和油门分布图": "是",
+		"绘制油门、刹车、电缓速器状态": "否",
+		"绘制电机功率变化图": "是",
+		"绘制电机功率分布图": "是",
+		"绘制TCU坡度曲线": "是",
+		"绘制车速-电缓-电机功率-电池电流图": "否",
+		"如果仪表和积分里程相差超过10%，则取积分里程作为总里程": "否"
+	},
+	"变速箱速比": {
+		"demo,此为TCU软件版本尾号(HEX)": {
+			"变速箱型号": "绿控J4S240",
+			"速比[一挡,二挡,三挡,四挡,五挡...]": [
+				8.39,
+				3.54,
+				1.74,
+				1.0
+			]
+		},
+		"0x31": {
+			"变速箱型号": "绿控J4S240",
+			"速比": [
+				8.39,
+				3.54,
+				1.74,
+				1.0
+			]
+		},
+		"0x51": {
+			"变速箱型号": "绿控J4S280",
+			"速比": [
+				8.674,
+				4.574,
+				2.29,
+				1.0
+			]
+		},
+		"0x33": {
+			"变速箱型号": "三一自主STE424",
+			"速比": [
+				8.408,
+				3.618,
+				1.836,
+				1.0
+			]
+		},
+		"0x53": {
+			"变速箱型号": "三一自主STE428",
+			"速比": [
+				8.672,
+				4.557,
+				2.232,
+				1.0
+			]
+		},
+		"0x22": {
+			"变速箱型号": "法士特4E120",
+			"速比": [
+				6.706,
+				3.499,
+				1.881,
+				1.0
+			]
+		}
+	},
+	"车型配置": {
+		"一代换电": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "ACRunningCurrent",
+					"电压": "AC_VoLT"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "是",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent",
+					"电压": "B2V_ST3_PackInsideVolt",
+					"SOC": "B2V_ST2_SOC",
+					"充电状态": "B2T_ChgST_A",
+					"累计充电电量": "B2V_TotChgEnergy",
+					"累计放电电量": "B2V_TotDischgEnergy",
+					"电池额定能量": "B2V_BI1_RatePower"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_DCDCOutCurr",
+					"电压": "A2V_DCDCOutVolt"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 0.1,
+				"信号名": {
+					"电流": "A2V_EAPMotDCCurr",
+					"电压": "A2V_EAPMotDCVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_HEPSMotDCCurr",
+					"电压": "A2V_HEPSMotDCVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "否"
+			},
+			"HCU": {
+				"是否处理": "否"
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程": "Total_mileage"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 10,
+				"信号名": {
+					"电流": "A2V_LEPSMotDCCurr",
+					"电压": "A2V_LEPSMotDCVolt"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "是",
+				"信号名": {
+					"转矩": "Motor_Torq",
+					"转速": "Motor_Rotate",
+					"电流": "MotorDCCurr",
+					"电压": "MCU_Volt"
+				}
+			},
+			"PTC": {
+				"是否处理": "否"
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"信号名": {
+					"车速": "VCU_Info1_Spd",
+					"油门踏板开度": "VCU_Info1_AccDegree",
+					"制动踏板开度": "VCU_Info1_BrkDegree",
+					"EP模式": "EP_Mode",
+					"电缓速挡位": "VCU_RetarderGear"
+				}
+			}
+		},
+		"一代纯电": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "ACRunningCurrent",
+					"电压": "AC_VoLT"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent",
+					"电压": "B2V_ST2_PackInsideVolt",
+					"SOC": "B2V_ST2_SOC",
+					"充电状态": "B2V_ST1_ChrgStatus",
+					"累计充电电量": "B2V_TotChgEnergy",
+					"累计放电电量": "B2V_TotDischgEnergy",
+					"电池额定能量": "B2V_BI1_RatePower"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_DCDCOutCurr",
+					"电压": "A2V_DCDCOutVolt"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 0.1,
+				"信号名": {
+					"电流": "A2V_EAPMotDCCurr",
+					"电压": "A2V_EAPMotDCVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_HEPSMotDCCurr",
+					"电压": "A2V_HEPSMotDCVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "否"
+			},
+			"HCU": {
+				"是否处理": "否"
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程": "Total_mileage"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 10,
+				"信号名": {
+					"电流": "A2V_LEPSMotDCCurr",
+					"电压": "A2V_LEPSMotDCVolt"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "是",
+				"信号名": {
+					"转矩": "Motor_Torq",
+					"转速": "Motor_Rotate",
+					"电流": "MCU_Volt",
+					"电压": "MotorDCCurr"
+				}
+			},
+			"PTC": {
+				"是否处理": "否",
+				"信号名": {
+					"功率": "PTC_WorkPower",
+					"电压": "PTC_HVVolt"
+				}
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"信号名": {
+					"车速": "VCU_Info1_Spd",
+					"油门踏板开度": "VCU_Info1_AccDegree",
+					"制动踏板开度": "VCU_Info1_BrkDegree",
+					"EP模式": "EP_Mode",
+					"电缓速挡位": "VCU_RetarderGear"
+				}
+			}
+		},
+		"二代纯电": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "AC_Current",
+					"电压": "AC_Voltage"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent",
+					"电压": "B2V_ST2_PackInsideVolt",
+					"SOC": "B2V_ST2_SOC",
+					"充电状态": "B2V_ST1_ChrgStatus",
+					"累计充电电量": "B2V_TotChgEnergy",
+					"累计放电电量": "B2V_TotDischgEnergy",
+					"电池额定能量": "B2V_BI1_RatePower",
+					"允许的脉冲回充电流": "B2V_AvailInpulseChrgCurr",
+					"允许的脉冲放电电流": "B2V_AvailInpulseDischrgCurr"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_DCDCOutCurr",
+					"电压": "A2V_DCDCOutVolt"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "A2V_EAPMotDCCurr",
+					"电压": "A2V_EAPMotDCVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_EPSMotDCCurr",
+					"电压": "A2V_EPSMotDCVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "否"
+			},
+			"HCU": {
+				"是否处理": "否"
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程": "Total_mileage"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "Busbar_Current",
+					"电压": "Busbar_Voltage"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"转矩": "M2V_MCU_DMTrq",
+					"转速": "M2V_MCU_DMSpd",
+					"电流": "M2V_DCCurrent",
+					"电压": "M2V_MCU_DCVolt"
+				}
+			},
+			"PTC": {
+				"是否处理": "是",
+				"信号名": {
+					"功率": "PTC_WorkPower",
+					"电压": "PTC_HVVolt"
+				}
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"信号名": {
+					"车速": "V2I_Info1_DrvSpd",
+					"油门踏板开度": "V2I_Info1_AccDegree",
+					"制动踏板开度": "V2I_Info1_BrkDegree",
+					"EP模式": "V2I_Info1_EPMode",
+					"电缓速挡位": "VCU_RetarderGear"
+				}
+			},
+			"TCU": {
+				"是否处理": "是",
+				"信号名": {
+					"变速箱当前档位": "TS1_CurrentGear",
+					"TCU输出轴转速": "TCU1_TrsmOutSpd",
+					"最大扭矩": "TCU_MaxTorque",
+					"变速箱供应商": "TCU_TCUSupply",
+					"坡度": "TCU1_Slope"
+				},
+				"信号值-挡位MAP": {
+					"0": 0,
+					"1": 1,
+					"2": 2,
+					"3": 3,
+					"4": 4,
+					"5": 5,
+					"6": 6,
+					"13": 0,
+					"14": 1,
+					"15": 0
+				}
+			}
+		},
+		"二代换电": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "ACRunningCurrent",
+					"电压": "AC_VoLT"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "是",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent_YC",
+					"电压": "B2V_ST2_PackInsideVolt_YC",
+					"SOC": "B2V_ST1_SOC_YC",
+					"充电状态": "B2T_ChgST_A"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_DCDCOutCurr",
+					"电压": "A2V_DCDCOutVolt"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 0.1,
+				"信号名": {
+					"电流": "A2V_EAPMotDCCurr",
+					"电压": "A2V_EAPMotDCVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_HEPSMotDCCurr",
+					"电压": "A2V_HEPSMotDCVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "否"
+			},
+			"HCU": {
+				"是否处理": "否"
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程": "Total_mileage"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 10,
+				"信号名": {
+					"电流": "A2V_LEPSMotDCCurr",
+					"电压": "A2V_LEPSMotDCVolt"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "是",
+				"信号名": {
+					"转矩": "Motor_Torq",
+					"转速": "Motor_Rotate",
+					"电流": "MotorDCCurr",
+					"电压": "MCU_Volt"
+				}
+			},
+			"PTC": {
+				"是否处理": "否"
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"信号名": {
+					"车速": "V2I_Info1_DrvSpd",
+					"油门踏板开度": "V2I_Info1_AccDegree",
+					"制动踏板开度": "V2I_Info1_BrkDegree",
+					"EP模式": "V2I_Info1_EPMode",
+					"电缓速挡位": "VCU_RetarderGear"
+				}
+			}
+		},
+		"一代燃电": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "C2T_CompCurr",
+					"电压": "C2T_CompVolt"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurr",
+					"电压": "B2V_ST2_PackInsideVolt",
+					"SOC": "B2V_ST2_SOC",
+					"充电状态": "B2V_ST1_ChrgSt",
+					"累计充电电量": "B2V_Energy_TotalChrgCap",
+					"累计放电电量": "B2V_Energy_TotalDischrgCap",
+					"电池额定能量": "B2V_Info1_BatRateEnergy"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_DCDCOutCurr",
+					"电压": "A2V_DCDCOutVolt"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "A2V_EAPMotDCCurr",
+					"电压": "A2V_EAPMotDCVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_EPSMotDCCurr",
+					"电压": "A2V_EPSMotDCVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "是",
+				"信号名": {
+					"燃电系统输出功率（净功率）": "FC_OutputPower",
+					"燃料电池电压": "FC_Voltage",
+					"DCDC输出功率": "FC_DCDC_OutputPower",
+					"DCDC输出电压": "FC_DCDC_V",
+					"DCDC输出电流": "FC_DCDC_A",
+					"水泵功率": "FC_WaterPump_Power",
+					"散热器功率": "FC_Fan_Power",
+					"空压机功率": "FC_AirComprsor_Power",
+					"氢气循环泵功率": "FC_H2RecyclePump_Power",
+					"PTC加热器功率": "FC_PTC_Power"
+				}
+			},
+			"HCU": {
+				"是否处理": "是",
+				"信号名": {
+					"累计耗氢量": "H2_Consume_Total",
+					"氢气剩余量": "H2_Remainder_Kg",
+					"单次耗氢量": "H2_Consume_Once"
+				}
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程": "I2V_TotalMileage"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 10,
+				"信号名": {
+					"电流": "A2V_LEPSMotDCCurr",
+					"电压": "A2V_LEPSMotDCVolt"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "是",
+				"信号名": {
+					"转矩": "M2V_MotTq",
+					"转速": "M2V_MotSpd",
+					"电流": "M2V_MotDCVolt",
+					"电压": "M2V_MotDCCur"
+				}
+			},
+			"PTC": {
+				"是否处理": "否",
+				"信号名": {
+					"功率": "PTC_WorkPower",
+					"电压": "PTC_HVVolt"
+				}
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"信号名": {
+					"车速": "V2I_Info1_DrvSpd",
+					"油门踏板开度": "V2I_Info1_AccDegree",
+					"制动踏板开度": "V2I_Info1_BrkDegree",
+					"EP模式": "V2I_Info1_EPMode",
+					"电缓速挡位": "V2I_Fault1_DESt"
+				}
+			}
+		},
+		"二代燃电": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "AC_Current",
+					"电压": "AC_Voltage"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent",
+					"电压": "B2V_ST2_PackInsideVolt",
+					"SOC": "B2V_ST2_SOC",
+					"充电状态": "B2V_ST1_ChrgStatus",
+					"累计充电电量": "B2V_TotChgEnergy",
+					"累计放电电量": "B2V_TotDischgEnergy",
+					"电池额定能量": "B2V_BI1_RatePower"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_DCDCOutCurr",
+					"电压": "A2V_DCDCOutVolt"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "A2V_EAPMotDCCurr",
+					"电压": "A2V_EAPMotDCVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "A2V_EPSMotDCCurr",
+					"电压": "A2V_EPSMotDCVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "是",
+				"信号名": {
+					"燃电系统输出功率（净功率）": "FC_OutputPower",
+					"燃料电池电压": "FC_Voltage",
+					"DCDC输出功率": "FC_DCDC_OutputPower",
+					"DCDC输出电压": "FC_DCDC_V",
+					"DCDC输出电流": "FC_DCDC_A",
+					"水泵功率": "FC_WaterPump_Power",
+					"散热器功率": "FC_Fan_Power",
+					"空压机功率": "FC_AirComprsor_Power",
+					"氢气循环泵功率": "FC_H2RecyclePump_Power",
+					"PTC加热器功率": "FC_PTC_Power"
+				}
+			},
+			"HCU": {
+				"是否处理": "是",
+				"信号名": {
+					"累计耗氢量": "H2_Consume_Total",
+					"氢气剩余量": "H2_Remainder_Kg",
+					"单次耗氢量": "H2_Consume_Once"
+				}
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程": "Total_mileage"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "Busbar_Current",
+					"电压": "Busbar_Voltage"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"转矩": "M1TV_MCU1_DMTrq",
+					"转速": "M1TV_MCU1_DMSpd",
+					"电流": "M1TV_DCCurrent",
+					"电压": "M1TV_MCU1_DCVolt"
+				}
+			},
+			"PTC": {
+				"是否处理": "是",
+				"信号名": {
+					"功率": "PTC_WorkPower",
+					"电压": "PTC_HVVolt"
+				}
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"信号名": {
+					"车速": "V2I_Info1_DrvSpd",
+					"油门踏板开度": "V2I_Info1_AccDegree",
+					"制动踏板开度": "V2I_Info1_BrkDegree",
+					"EP模式": "V2I_Info1_EPMode",
+					"电缓速挡位": "VCU_RetarderGear"
+				}
+			}
+		},
+		"新C增程": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "AC_Current",
+					"电压": "AC_Voltage"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent_CV",
+					"电压": "B2V_ST2_PackInsideVolt_CV",
+					"SOC": "B2V_ST2_SOC_CV",
+					"充电状态": "B2V_ST1_ChrgStatus_CV",
+					"累计充电电量": "B2V_TotChgEnergy_CV",
+					"累计放电电量": "B2V_TotDischgEnergy_CV",
+					"电池额定能量": "B2V_BI1_RatePower_CV"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "DCDC_OutCurr_CV",
+					"电压": "DCDC_OutVolt_CV"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "EAP_BusbarCurr",
+					"电压": "EAP_BusbarVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "HEPS_BusbarCurr",
+					"电压": "HEPS_BusbarVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "否",
+				"信号名": {
+					"燃电系统输出功率（净功率）": " "
+				}
+			},
+			"HCU": {
+				"是否处理": "否",
+				"信号名": {
+					"累计耗氢量": " "
+				}
+			},
+			"RCU": {
+				"是否处理": "是",
+				"信号名": {
+					"増程器累积发电量": "RexGenrTot",
+					"发动机累计燃油消耗量": "EngineTotalFuelUsed",
+					"增程器电机电压": "REXOutVlt",
+					"增程器电机电流": "REXOutCur",
+					"增程器电机转矩": "FISGActTorqueTx",
+					"增程器电机转速": "FISGActSpdTx"
+				}
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程缩放系数": 0.001,
+					"里程": "TotalVehicleDistanceHR"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "LEPS_Busbar_Current",
+					"电压": "LEPS_Busbar_Voltage"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"转矩": "MotorTorque_CV",
+					"转速": "MotorSpeed_CV",
+					"电流": "MotorBusbarCurrent_CV",
+					"电压": "MotorBusbarVolt_CV"
+				}
+			},
+			"PTC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "PTC_BusbarCurrent",
+					"电压": "PTC_BusbarVoltage"
+				}
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"根据车速插值": [
+					"油门踏板开度",
+					"制动踏板开度",
+					"EP模式"
+				],
+				"信号名": {
+					"车速": "WheelBasedVehicleSpeed",
+					"油门踏板开度": "ACCPedPstn",
+					"制动踏板开度": "BrkPedPstn",
+					"EP模式": "EPMode"
+				}
+			},
+			"VCU_P": {
+				"是否处理": "是",
+				"信号名": {
+					"电缓速挡位": "RetarderGear"
+				}
+			}
+		},
+		"新C轻混": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "CompCurrent",
+					"电压": "CompVoltage"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent_CV",
+					"电压": "B2V_ST2_PackInsideVolt_CV",
+					"SOC": "B2V_ST2_SOC_CV",
+					"充电状态": "B2V_ST1_ChrgStatus_CV",
+					"累计充电电量": "B2V_TotChgEnergy_CV",
+					"累计放电电量": "B2V_TotDischgEnergy_CV",
+					"电池额定能量": "B2V_BI1_RatePower_CV"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "DCDC_OutCurr_CV",
+					"电压": "DCDC_OutVolt_CV"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "EAP_BusbarCurr",
+					"电压": "EAP_BusbarVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "否",
+				"信号名": {
+					"电流": "HEPS_BusbarCurr",
+					"电压": "HEPS_BusbarVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "否",
+				"信号名": {
+					"燃电系统输出功率（净功率）": " "
+				}
+			},
+			"HCU": {
+				"是否处理": "否",
+				"信号名": {
+					"累计耗氢量": " "
+				}
+			},
+			"RCU": {
+				"是否处理": "是",
+				"信号名": {
+					"发动机累计燃油消耗量": "EngineTotalFuelUsed_HighResolution"
+				}
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程缩放系数": 0.001,
+					"里程": "TotalVehicleDistanceHR"
+				}
+			},
+			"LEPS": {
+				"是否处理": "否",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "LEPS_Busbar_Current",
+					"电压": "LEPS_Busbar_Voltage"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"转矩": "MotorTorque_CV",
+					"转速": "MotorSpeed_CV",
+					"电流": "MotorBusbarCurrent_CV",
+					"电压": "MotorBusbarVolt_CV"
+				}
+			},
+			"PTC": {
+				"是否处理": "否",
+				"信号名": {
+					"电流": " "
+				}
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"根据车速插值": [
+					"油门踏板开度",
+					"制动踏板开度",
+					"EP模式"
+				],
+				"信号名": {
+					"车速": "WheelBasedVehicleSpeed",
+					"油门踏板开度": "AcceleratorPedalPosition1",
+					"制动踏板开度": "BrakePedalPosition",
+					"EP模式": "EPMode",
+					"电缓速挡位": "EnergyRecycleSt"
+				}
+			},
+			"VCU_P": {
+				"是否处理": "否",
+				"信号名": {
+					"电缓速挡位": "RetarderGear"
+				}
+			}
+		},
+		"新C纯电": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "AC_Current",
+					"电压": "AC_Voltage"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent_CV",
+					"电压": "B2V_ST2_PackInsideVolt_CV",
+					"SOC": "B2V_ST2_SOC_CV",
+					"充电状态": "B2V_ST1_ChrgStatus_CV",
+					"累计充电电量": "B2V_TotChgEnergy_CV",
+					"累计放电电量": "B2V_TotDischgEnergy_CV",
+					"电池额定能量": "B2V_BI1_RatePower_CV"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "DCDC_OutCurr_CV",
+					"电压": "DCDC_OutVolt_CV"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "EAP_BusbarCurr",
+					"电压": "EAP_BusbarVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "HEPS_BusbarCurr",
+					"电压": "HEPS_BusbarVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "否",
+				"信号名": {
+					"燃电系统输出功率（净功率）": " "
+				}
+			},
+			"HCU": {
+				"是否处理": "否",
+				"信号名": {
+					"累计耗氢量": " "
+				}
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程缩放系数": 0.001,
+					"里程": "TotalVehicleDistanceHR"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "LEPS_Busbar_Current",
+					"电压": "LEPS_Busbar_Voltage"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"转矩": "MotorTorque_CV",
+					"转速": "MotorSpeed_CV",
+					"电流": "MotorBusbarCurrent_CV",
+					"电压": "MotorBusbarVolt_CV"
+				}
+			},
+			"PTC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "PTC_BusbarCurrent",
+					"电压": "PTC_BusbarVoltage"
+				}
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"根据车速插值": [
+					"油门踏板开度",
+					"制动踏板开度",
+					"EP模式"
+				],
+				"信号名": {
+					"车速": "WheelBasedVehicleSpeed",
+					"油门踏板开度": "ACCPedPstn",
+					"制动踏板开度": "BrkPedPstn",
+					"EP模式": "EPMode"
+				}
+			},
+			"VCU_P": {
+				"是否处理": "是",
+				"信号名": {
+					"电缓速挡位": "RetarderGear"
+				}
+			}
+		},
+		"新C纯电26": {
+			"AC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "ACCM_BusbarCurrent",
+					"电压": "ACCM_BusbarVoltage"
+				}
+			},
+			"BMS_B": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"电流": "B2V_ST2_PackCurrent_CV",
+					"电压": "B2V_ST2_PackInsideVolt_CV",
+					"SOC": "B2V_ST2_SOC_CV",
+					"充电状态": "B2V_ST1_ChrgStatus_CV",
+					"累计充电电量": "B2V_TotChgEnergy_CV",
+					"累计放电电量": "B2V_TotDischgEnergy_CV",
+					"电池额定能量": "B2V_BI1_RatePower_CV",
+					"允许的脉冲回充电流": "B2V_AvailInpulseChrgCurr_CV",
+					"允许的脉冲放电电流": "B2V_AvailInpulseDischrgCurr_CV"
+				}
+			},
+			"DCDC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "DCDC_OutCurr_CV",
+					"电压": "DCDC_OutVolt_CV"
+				}
+			},
+			"EAP": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "EAP_BusbarCurr",
+					"电压": "EAP_BusbarVolt"
+				}
+			},
+			"EPS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "HEPS_BusbarCurr",
+					"电压": "HEPS_BusbarVolt"
+				}
+			},
+			"FCU": {
+				"是否处理": "否",
+				"信号名": {
+					"燃电系统输出功率（净功率）": " "
+				}
+			},
+			"HCU": {
+				"是否处理": "否",
+				"信号名": {
+					"累计耗氢量": " "
+				}
+			},
+			"ICM": {
+				"是否处理": "是",
+				"信号名": {
+					"里程缩放系数": 0.001,
+					"里程": "TotalVehicleDistanceHR"
+				}
+			},
+			"LEPS": {
+				"是否处理": "是",
+				"电压缩放系数": 1,
+				"信号名": {
+					"电流": "LEPS_Busbar_Current",
+					"电压": "LEPS_Busbar_Voltage"
+				}
+			},
+			"MCU": {
+				"是否处理": "是",
+				"电压是否插值": "否",
+				"信号名": {
+					"转矩": "MotorTorque_CV",
+					"转速": "MotorSpeed_CV",
+					"电流": "MotorBusbarCurrent_CV",
+					"电压": "MotorBusbarVolt_CV"
+				}
+			},
+			"PTC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "PTC_BusbarCurrent",
+					"电压": "PTC_BusbarVoltage"
+				}
+			},
+			"VCU_B": {
+				"是否处理": "是",
+				"根据车速插值": [
+					"EP模式"
+				],
+				"信号名": {
+					"车速": "WheelBasedVehicleSpeed",
+					"EP模式": "EPMode"
+				}
+			},
+			"VCU_P": {
+				"是否处理": "是",
+				"根据车速插值": [
+					"油门踏板开度",
+					"制动踏板开度"
+				],
+				"信号名": {
+					"电缓速挡位": "RetarderGear",
+					"油门踏板开度": "Debug3_AccPadPct",
+					"制动踏板开度": "Debug6_BrkPedPct"
+				}
+			},
+			"TMS": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "TMS_BusbarCurrent",
+					"电压": "TMS_BusbarVoltage"
+				}
+			},
+			"BPTC": {
+				"是否处理": "是",
+				"信号名": {
+					"电流": "PTC_BusbarCurrent",
+					"电压": "PTC_BusbarVoltage"
+				}
+			},
+			"TCU": {
+				"是否处理": "是",
+				"信号名": {
+					"变速箱当前档位": "TransmissionCurrentGear",
+					"TCU输出轴转速": "Transmission1OutputShaftSpeed",
+					"最大扭矩": "TCU_MaxTorque",
+					"变速箱供应商": "TCU_TCUSupply",
+					"坡度": "PitchAngle"
+				},
+				"信号值-挡位MAP": {
+					"-1": 1,
+					"0": 0,
+					"1": 1,
+					"2": 2,
+					"3": 3,
+					"4": 4,
+					"5": 5,
+					"6": 6,
+					"126": 0,
+					"129": 0,
+					"130": 0
+				}
+			}
+		}
+	}
+}

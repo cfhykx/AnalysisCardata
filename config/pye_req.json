@@ -1,0 +1,4 @@
+{
+	"requirements": ["pandas", "chardet", "tqdm", "matplotlib", "scipy"],
+	"mirror": "https://pypi.tuna.tsinghua.edu.cn/simple"
+}

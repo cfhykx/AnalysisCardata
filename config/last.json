@@ -1,0 +1,11 @@
+{
+	"vehicle_type": 8,
+	"dbc_config": "analysis\\新C纯电26\\dbc_config-新C纯电26通用.json",
+	"workspace": "C:/Desktop/贵州/26DP0131009590/data",
+	"pattern_txt_opt": {
+		"Trucklink": "^(\\d) (0x[0-9A-F]+) (\\d+:\\d+:\\d+.\\d+) [a-z]{3} data 0x\\d ([0-9A-F ]+)$",
+		"NewC": "^(\\d) (0x[0-9A-F]+) \\d (\\d+:\\d+:\\d+.\\d+) [a-z]{3} data 0x\\d+ ([0-9A-F ]+)$"
+	},
+	"pattern_txt": "^(\\d) (0x[0-9A-F]+) \\d (\\d+:\\d+:\\d+.\\d+) [a-z]{3} data 0x\\d+ ([0-9A-F ]+)$",
+	"pattern_asc": "^(\\d+\\.\\d+) (\\d) ([0-9A-F]+x) RX d \\d ([0-9A-F ]+)$"
+}
